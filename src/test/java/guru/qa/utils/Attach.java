@@ -34,7 +34,9 @@ public class Attach {
     }
 
     public static void browserConsoleLogs() {
-        attachAsText("\n", Selenide.getWebDriverLogs(BROWSER).toString());
+
+        attachAsText("Browser console log",
+                String.join("\n", Selenide.getWebDriverLogs(BROWSER).toString()));
     }
 
     @Attachment(value = "Video", type = "text/html", fileExtension = ".html")
