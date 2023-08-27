@@ -8,6 +8,8 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.util.Map;
 
+import static com.codeborne.selenide.Selenide.closeWebDriver;
+
 public class TestBase {
 
     @BeforeAll
@@ -19,10 +21,12 @@ public class TestBase {
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
+        capabilities.setCapability("selenoid:options", Map.of(
                 "enableVNC", true,
                 "enableVideo", true
         ));
+
+        Configuration.browserCapabilities = capabilities;
     }
 
     @AfterEach
@@ -31,5 +35,7 @@ public class TestBase {
         Attach.pageSource();
         Attach.browserConsoleLogs();
         Attach.addVideo();
+
+        closeWebDriver();
     }
 }
