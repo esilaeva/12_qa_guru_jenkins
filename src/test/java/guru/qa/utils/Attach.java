@@ -34,14 +34,15 @@ public class Attach {
     }
 
     public static void browserConsoleLogs() {
-
-        attachAsText("Browser console log",
-                String.join("\n", Selenide.getWebDriverLogs(BROWSER).toString()));
+        attachAsText(
+                "Browser console log",
+                String.join("\n", Selenide.getWebDriverLogs(BROWSER))
+        );
     }
 
     @Attachment(value = "Video", type = "text/html", fileExtension = ".html")
     public static String addVideo() {
-        return "<html><body><video  width='100%' height='100%' controls autoplay><source src ="
+        return "<html><body><video width='100%' height='100%' controls autoplay><source src='"
                 + getVideoUrl()
                 + "' type='video/mp4'></video></body></html>";
     }
@@ -53,6 +54,7 @@ public class Attach {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
+
         return null;
     }
 }
