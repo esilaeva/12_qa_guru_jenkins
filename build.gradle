@@ -46,9 +46,3 @@ test {
     useJUnitPlatform()
     systemProperties(System.getProperties())
 }
-
-task tests(type: Test){
-    useJUnitPlatform{
-        include("tests")
-    }
-}
