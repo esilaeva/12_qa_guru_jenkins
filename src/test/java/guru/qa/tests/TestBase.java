@@ -1,4 +1,4 @@
-package guru.qa.pages;
+package guru.qa.tests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
