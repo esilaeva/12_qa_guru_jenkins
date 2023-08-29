@@ -21,8 +21,8 @@ public class RegistrationPageObjectsWithFakerTests extends TestBase {
         steps.checkResult();
     }
 
-    @Tag("all")
     @Test
+    @Tag("all")
     void successRegistrationTest() {
         SelenideLogger.addListener("allure", new AllureSelenide());
         WebSteps steps = new WebSteps();
