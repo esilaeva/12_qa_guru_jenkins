@@ -42,19 +42,35 @@ dependencies {
     )
 }
 
-test {
-    useJUnitPlatform()
+tasks.withType(Test){
     systemProperties(System.getProperties())
+
+    testLogging {
+        lifecycle {
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
+    }
 }
 
-task smokeTest(type: Test){
+test {
+    useJUnitPlatform()
+}
+
+task smoke_test(type: Test){
     useJUnitPlatform{
         includeTags("smoke")
     }
 }
 
-task allTest(type: Test){
+task all_test(type: Test){
     useJUnitPlatform{
         includeTags("all")
+    }
+}
+
+task property_test(type: Test){
+    useJUnitPlatform{
+        includeTags("property")
     }
 }
